@@ -11,12 +11,13 @@
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^6.5.2",
     "@fortawesome/free-solid-svg-icons": "^6.5.2",
-    "@fortawesome/vue-fontawesome": "^3.0.6",
+    "@fortawesome/vue-fontawesome": "^3.0.8",
     "@vueuse/core": "^10.9.0",
     "axios": "^1.6.8",
     "swiper": "^11.1.1",
     "vue": "^3.4.21",
     "vue-carousel": "^0.18.0",
+    "vue-chartjs": "^5.3.1",
     "vue-router": "^4.3.0"
   },
   "devDependencies": {

@@ -6,11 +6,11 @@ import java.util.List;
 
 public interface HabilidadRepository {
     List<HabilidadEntity> getAll();
-    List<HabilidadEntity> getById(Long id);
+    List<HabilidadEntity> getById(Integer id);
     HabilidadEntity save(HabilidadEntity habilidad);
-    String updateNombreHabilidad(HabilidadEntity habilidad,Long id);
+    String updateNombreHabilidad(HabilidadEntity habilidad,Integer id);
     List<HabilidadEntity> getByEmailVoluntario(String email);
-    void delete(Long id);
+    void delete(Integer id);
 
     List<HabilidadEntity> findAll();
 }

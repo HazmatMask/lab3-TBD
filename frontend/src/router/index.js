@@ -6,7 +6,8 @@ import Postulacion from '@/views/Postulacion.vue'
 import Login from '@/views/Login.vue'
 import Habilidades from '@/views/Habilidades.vue'
 import VoluntariosCercanos from '@/views/VoluntariosCercanos.vue'
-import Dashboard from '@/views/Dashboard.vue';
+import Dashboard from '@/views/Dashboard.vue'
+import Estadisticas from '@/views/estadisticasHabilidades.vue';
 
 
 
@@ -53,6 +54,11 @@ const router = createRouter({
       name: 'Voluntarios cercanos',
       component: VoluntariosCercanos
     },
+     {
+       path: '/estadisticas',
+       name: 'Estadisticas',
+       component: Estadisticas
+     },
     {
       path: '/dashboard',
       name: 'dashboard',

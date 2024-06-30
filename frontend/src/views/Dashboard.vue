@@ -27,6 +27,11 @@
             <h2>Voluntarios Cercanos</h2>
             <p>Encuentra a los voluntarios más cercanos a una tarea.</p>
           </div>
+            <div class="card" @click="navigateTo('estadisticas')">
+              <font-awesome-icon icon="fa-solid fa-users" size="3x" class="icon" />
+              <h2>Estadisticas</h2>
+              <p>bottom text</p>
+            </div>
         </div>
       </div>
     </div>

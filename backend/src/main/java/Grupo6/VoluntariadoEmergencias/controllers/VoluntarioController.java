@@ -12,6 +12,8 @@ import Grupo6.VoluntariadoEmergencias.services.VoluntarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @CrossOrigin(origins = "http://localhost:5173")
@@ -42,28 +44,21 @@ public class VoluntarioController {
     //get by
     @GetMapping("/voluntarios/getById/{id}")
     @ResponseBody
-    public List<VoluntarioEntity> getVoluntarioById(@PathVariable Long id){
+    public List<VoluntarioEntity> getVoluntarioById(@PathVariable Integer id){
         return voluntarioService.getVoluntarioById(id);
     }
-
-    @GetMapping("/voluntarios/getByCercania/{idEmergencia}/{cantidad}")
-    @ResponseBody
-    public List<VoluntarioEntity> getVoluntarioByCercania(@PathVariable Long idEmergencia, @PathVariable int cantidad){
-        return voluntarioService.getVoluntariosByCercania(idEmergencia, cantidad);
-    }
-
 
     // actualizar U
     @PutMapping("/voluntarios/update/{id}")
     @ResponseBody
-    public String updateVoluntario(@RequestBody VoluntarioEntity voluntario, @PathVariable Long id){
+    public String updateVoluntario(@RequestBody VoluntarioEntity voluntario, @PathVariable Integer id){
         String retorno = voluntarioService.updateVoluntario(voluntario,id);
         return retorno;
     }
 
     // borrar D
     @DeleteMapping("/voluntarios/delete/{id}")
-    public void deleteVoluntario(@PathVariable Long id){
+    public void deleteVoluntario(@PathVariable Integer id){
         voluntarioService.deleteVoluntario(id);
     }
 
@@ -85,12 +80,19 @@ public class VoluntarioController {
 
     @PostMapping("/voluntarios/habilidades")
     public List<HabilidadEntity> getHabilidades(@RequestBody JWTForm form){
-        return habilidadService.getHabilidadByVoluntario(form);
+        return voluntarioService.getAllHabilidades();
     }
-
 
     @PostMapping("/voluntarios/agregarHabilidades")
     public String agregarHabilidades(@RequestBody AbilitiesForm form){
         return voluntarioService.agregarHabilidades(form);
     }
+
+    @PostMapping("/voluntarios/estadisticasHabilidades")
+    public ArrayList<HashMap<String, Object>> estadisticasHabilidades(@RequestBody AbilitiesForm form){
+        ArrayList<HashMap<String, Object>> output = voluntarioService.getSkillStats(form);
+
+        return output;
+    }
+
 }

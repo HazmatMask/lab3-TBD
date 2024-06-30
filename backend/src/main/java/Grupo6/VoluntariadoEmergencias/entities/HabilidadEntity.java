@@ -2,21 +2,21 @@ package Grupo6.VoluntariadoEmergencias.entities;
 
 public class HabilidadEntity {
 
-    private Long habilidadId;
+    private Integer habilidadId;
     private String nombre;
     private String descripcion;
 
-    public HabilidadEntity(Long id, String nombre, String descripcion) {
+    public HabilidadEntity(Integer id, String nombre, String descripcion) {
         this.habilidadId = id;
         this.nombre = nombre;
         this.descripcion = descripcion;
     }
 
-    public Long getId() {
+    public Integer getId() {
         return habilidadId;
     }
 
-    public void setId(Long habilidadId) {
+    public void setId(Integer habilidadId) {
         this.habilidadId = habilidadId;
     }
 

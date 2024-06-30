@@ -35,19 +35,17 @@ public class HabilidadService {
     }
     //get by
 
-    public List<HabilidadEntity> getHabilidadById(Long id){
+    public List<HabilidadEntity> getHabilidadById(Integer id){
         return habilidadRepository.getById(id);
     }
 
-
-
-    public String updateNombreHabilidad( HabilidadEntity habilidad, Long id){
+    public String updateNombreHabilidad( HabilidadEntity habilidad, Integer id){
         String retorno = habilidadRepository.updateNombreHabilidad(habilidad,id);
         return retorno;
     }
 
 
-    public void deleteHabilidad(Long id){
+    public void deleteHabilidad(Integer id){
         habilidadRepository.delete(id);
     }
 

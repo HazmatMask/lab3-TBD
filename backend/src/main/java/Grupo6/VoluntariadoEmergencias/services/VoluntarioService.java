@@ -6,11 +6,12 @@ import Grupo6.VoluntariadoEmergencias.Responses.Login;
 import Grupo6.VoluntariadoEmergencias.Utils.Encrypter;
 import Grupo6.VoluntariadoEmergencias.entities.HabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.entities.VoluntarioEntity;
-import Grupo6.VoluntariadoEmergencias.entities.VoluntarioHabilidadEntity;
 import Grupo6.VoluntariadoEmergencias.repositories.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 
 @Service
@@ -41,24 +42,20 @@ public class VoluntarioService {
     }
     //get by
 
-    public List<VoluntarioEntity> getVoluntarioById(Long id){
+    public List<VoluntarioEntity> getVoluntarioById(Integer id){
         return voluntarioRepository.getById(id);
-    }
-
-    public List<VoluntarioEntity> getVoluntariosByCercania(Long idEmergencia, int cantidad){
-        return voluntarioRepository.getByUbicacionCercana(idEmergencia, cantidad);
     }
 
     // actualizar U
 
-    public String updateVoluntario(VoluntarioEntity voluntario, Long id){
+    public String updateVoluntario(VoluntarioEntity voluntario, Integer id){
         String retorno = voluntarioRepository.update(voluntario,id);
         return retorno;
     }
 
     // borrar D
 
-    public void deleteVoluntario(Long id){
+    public void deleteVoluntario(Integer id){
         voluntarioRepository.delete(id);
     }
 
@@ -72,7 +69,10 @@ public class VoluntarioService {
         if (vol == null) {
             return new Login(false, null);
         }
-        if (!form.getPassword().equals(Encrypter.decrypt(vol.getPassword(),vol.getEmail()))){
+        /*if (!form.getPassword().equals(Encrypter.decrypt(vol.getPassword(),vol.getEmail()))){
+            return new Login(false, null);
+        }*/
+        if (!form.getPassword().equals(vol.getPassword())){
             return new Login(false, null);
         }
 
@@ -87,9 +87,6 @@ public class VoluntarioService {
         return null;
     }
 
-    @Autowired
-    VoluntarioHabilidadRepository voluntarioHabilidadRepository;
-
     public String agregarHabilidades(AbilitiesForm form) {
         if (!JWT.validateToken(form.getToken()))
             return null;
@@ -101,13 +98,21 @@ public class VoluntarioService {
             return "El usuario no existe";
         }
 
-        for (Long ability_id : form.getAbility_ids()) {
-            VoluntarioHabilidadEntity volhab = new VoluntarioHabilidadEntity(null, vol.getId(), ability_id);
-            voluntarioHabilidadRepository.save(volhab);
-        }
+        voluntarioRepository.updateHabilidades(vol, vol.getId(), form.getAbility_ids());
 
         return "Las habilidades se agregaron exitosamente";
     }
 
+    public ArrayList<HashMap<String, Object>> getSkillStats(AbilitiesForm form){
+        if(!JWT.validateToken(form.getToken()))
+            return null;
 
+        LoginForm user = JWT.decodeJWT(form.getToken());
+
+        VoluntarioEntity vol = voluntarioRepository.getByEmail(user.getEmail());
+        if (vol == null) {
+            return null;
+        }
+        return voluntarioRepository.getHabilidadesStats(form.getAbility_ids());
+    }
 }

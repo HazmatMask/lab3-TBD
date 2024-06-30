@@ -30,7 +30,7 @@ public class HabilidadController {
     //get by
     @GetMapping("/habilidades/getById/{id}")
     @ResponseBody
-    public List<HabilidadEntity> getHabilidadById(@PathVariable Long id){
+    public List<HabilidadEntity> getHabilidadById(@PathVariable Integer id){
         return habilidadService.getHabilidadById(id);
     }
 
@@ -38,14 +38,14 @@ public class HabilidadController {
     // actualizar U
     @PutMapping("/habilidades/update/{id}")
     @ResponseBody
-    public String updateHabilidad(@RequestBody HabilidadEntity habilidad, @PathVariable Long id){
+    public String updateHabilidad(@RequestBody HabilidadEntity habilidad, @PathVariable Integer id){
         String retorno = habilidadService.updateNombreHabilidad(habilidad,id);
         return retorno;
     }
 
     // borrar D
     @DeleteMapping("/habilidades/delete/{id}")
-    public void deleteHabilidad(@PathVariable Long id){
+    public void deleteHabilidad(@PathVariable Integer id){
         habilidadService.deleteHabilidad(id);
     }
 
