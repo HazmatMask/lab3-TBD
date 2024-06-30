@@ -1,0 +1,216 @@
+//CREAR BASE DE DATOS:
+
+use Lab3TBD
+
+//POBLAR BASE DE DATOS (COLECCIONES / OBJETOS):
+
+db.Counter.insertMany([{"name":"voluntarios","counter":7},{"name":"habilidad","counter":21}]);
+db.Habilidades.insertMany([
+  { "SkillId": 1, "nombre": "Primeros Auxilios", "descripcion": "Capacidad para realizar atención inicial en emergencias médicas." },
+  { "SkillId": 2, "nombre": "Incendios Forestales", "descripcion": "Experiencia en combate de incendios en áreas naturales." },
+  { "SkillId": 3, "nombre": "Remoción de escombros", "descripcion": "Capacidad para realizar labores de remoción de escombros." },
+  { "SkillId": 4, "nombre": "Asistencia Psicológica", "descripcion": "Experiencia en el rubro de la psicología y trata de personas." },
+  { "SkillId": 5, "nombre": "Búsqueda y Rescate", "descripcion": "Habilidades especializadas en la localización y recuperación de personas atrapadas o perdidas." },
+  { "SkillId": 6, "nombre": "Cocinero", "descripcion": "Experiencia en Cocina para ollas comunes." }
+]);
+db.Voluntarios.insertMany([
+  {
+    "voluntarioId": 1,
+    "nombre": "Luis Navarro",
+    "email": "luis.navarro@example.com",
+    "password": "pass456",
+    "rut": "23456789-0",
+    "ubicacion_voluntario": [-70.72413394422644, -33.47538868364822],
+    "habilidad": ["Remoción de escombros", "Asistencia Psicológica"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 2,
+    "nombre": "Carla Espinoza",
+    "email": "carla.espinoza@example.com",
+    "password": "pass789",
+    "rut": "14567890-1",
+    "ubicacion_voluntario": [-72.23595293617713, -39.295751618022386],
+    "habilidad": ["Búsqueda y Rescate", "Cocinero"],
+    "emergencia": "Aluvión en San José de Maipo"
+  },
+  {
+    "voluntarioId": 3,
+    "nombre": "Marco Antonio",
+    "email": "marco.antonio@example.com",
+    "password": "pass012",
+    "rut": "15678901-2",
+    "ubicacion_voluntario": [-72.23591193023263, -39.295938693967116],
+    "habilidad": ["Primeros Auxilios", "Remoción de escombros"],
+    "emergencia": "Terremoto en la Falla de San Ramón"
+  },
+  {
+    "voluntarioId": 4,
+    "nombre": "Ximena Soto",
+    "email": "ximena.soto@example.com",
+    "password": "pass345",
+    "rut": "16789012-3",
+    "ubicacion_voluntario": [-72.23591193023263, -39.295938693967116],
+    "habilidad": ["Incendios Forestales", "Asistencia Psicológica"],
+    "emergencia": "Inundación en Curanilahue"
+  },
+  {
+    "voluntarioId": 5,
+    "nombre": "Diego Morales",
+    "email": "diego.morales@example.com",
+    "password": "pass678",
+    "rut": "17890123-4",
+    "ubicacion_voluntario": [-72.23642324842609, -39.29429961138347],
+    "habilidad": ["Búsqueda y Rescate", "Cocinero"],
+    "emergencia": "Accidente de Tránsito ruta 5"
+  },
+  {
+    "voluntarioId": 6,
+    "nombre": "Rosa Campos",
+    "email": "rosa.campos@example.com",
+    "password": "pass901",
+    "rut": "18901234-5",
+    "ubicacion_voluntario": [-72.23594449904962, -39.294483889806955],
+    "habilidad": ["Primeros Auxilios", "Búsqueda y Rescate"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 7,
+    "nombre": "Javier López",
+    "email": "javier.lopez@example.com",
+    "password": "pass234",
+    "rut": "19012345-6",
+    "ubicacion_voluntario": [-72.23546478607034, -39.29408053252056],
+    "habilidad": ["Incendios Forestales", "Asistencia Psicológica"],
+    "emergencia": "Erupción Volcan Villarrica"
+  },
+  {
+    "voluntarioId": 8,
+    "nombre": "Mónica Gutiérrez",
+    "email": "monica.gutierrez@example.com",
+    "password": "pass567",
+    "rut": "20123456-7",
+    "ubicacion_voluntario": [-72.23887361702606, -39.29572248782302],
+    "habilidad": ["Remoción de escombros", "Cocinero"],
+    "emergencia": "Deslizamiento de Tierra en Arica"
+  },
+  {
+    "voluntarioId": 9,
+    "nombre": "Esteban Rojas",
+    "email": "esteban.rojas@example.com",
+    "password": "pass890",
+    "rut": "21234567-8",
+    "ubicacion_voluntario": [-72.23953432795741, -39.29436198328951],
+    "habilidad": ["Primeros Auxilios", "Incendios Forestales", "Búsqueda y Rescate"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 10,
+    "nombre": "Carmen Herrera",
+    "email": "carmen.herrera@example.com",
+    "password": "pass1234",
+    "rut": "20345678-0",
+    "ubicacion_voluntario": [-72.23939122721433, -39.29418905819766],
+    "habilidad": ["Remoción de escombros", "Asistencia Psicológica", "Cocinero"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 11,
+    "nombre": "Fernando Mora",
+    "email": "fernando.mora@example.com",
+    "password": "pass5678",
+    "rut": "23456789-1",
+    "ubicacion_voluntario": [-70.94343055289791, -53.161673785843504],
+    "habilidad": ["Primeros Auxilios", "Búsqueda y Rescate"],
+    "emergencia": "Terremoto en la Falla de San Ramón"
+  },
+ {
+    "voluntarioId": 12,
+    "nombre": "Gabriela Castillo",
+    "email": "gabriela.castillo@example.com",
+    "password": "pass9111",
+    "rut": "21567890-2",
+    "ubicacion_voluntario": [-70.94572199434975, -53.160851706087755],
+    "habilidad": ["Incendios Forestales", "Asistencia Psicológica"],
+    "emergencia": "Inundación en Curanilahue"
+  },
+  {
+    "voluntarioId": 13,
+    "nombre": "Mauricio Pinto",
+    "email": "mauricio.pinto@example.com",
+    "password": "pass1213",
+    "rut": "22678901-3",
+    "ubicacion_voluntario": [-70.31368820371438, -27.3590183560186],
+    "habilidad": ["Remoción de escombros", "Cocinero"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 14,
+    "nombre": "Lucia Méndez",
+    "email": "lucia.mendez@example.com",
+    "password": "pass1415",
+    "rut": "22789012-4",
+    "ubicacion_voluntario": [-70.31283756029991, -27.35836069846974],
+    "habilidad": ["Primeros Auxilios", "Incendios Forestales"],
+    "emergencia": "Incendio en la Quinta Región"
+  },
+  {
+    "voluntarioId": 15,
+    "nombre": "Carmen Rosario",
+    "email": "carmen.rosario@example.com",
+    "password": "pass1234",
+    "rut": "21445678-0",
+    "ubicacion_voluntario": [-70.13005699582126, -20.235032129183317],
+    "habilidad": ["Remoción de escombros", "Asistencia Psicológica"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 16,
+    "nombre": "Fernando Martinez",
+    "email": "fernando.martinez@example.com",
+    "password": "pass5678",
+    "rut": "22456789-2",
+    "ubicacion_voluntario": [-70.13047671112301, -20.237267679052415],
+    "habilidad": ["Búsqueda y Rescate", "Cocinero"],
+    "emergencia": "Aluvión en San José de Maipo"
+  },
+  {
+    "voluntarioId": 17,
+    "nombre": "Gabriela Gaete",
+    "email": "gabriela.gaete@example.com",
+    "password": "pass91011",
+    "rut": "20567890-2",
+    "ubicacion_voluntario": [-70.1310180399508, -20.236845974454152],
+    "habilidad": ["Primeros Auxilios", "Búsqueda y Rescate"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 18,
+    "nombre": "Mauricio Martinez",
+    "email": "mauricio.martinez@example.com",
+    "password": "pass1213",
+    "rut": "20678901-2",
+    "ubicacion_voluntario": [-70.13053487778923, -20.236312329044015],
+    "habilidad": ["Incendios Forestales", "Asistencia Psicológica"],
+    "emergencia": "Disponible"
+  },
+  {
+    "voluntarioId": 19,
+    "nombre": "Lucia Petinelli",
+    "email": "lucia.petinelli@example.com",
+    "password": "pass1415",
+    "rut": "21789012-2",
+    "ubicacion_voluntario": [-70.80860877689753, -33.23262573587894],
+    "habilidad": ["Remoción de escombros", "Cocinero"],
+    "emergencia": "Deslizamiento de Tierra en Arica"
+  },
+  {
+    "voluntarioId": 20,
+    "nombre": "Andrea Juárez",
+    "email": "andrea.juarez@example.com",
+    "password": "pass123",
+    "rut": "12345678-9",
+    "ubicacion_voluntario": [-70.72326024012591, -33.475460477185464],
+    "habilidad": ["Primeros Auxilios", "Incendios Forestales"],
+    "emergencia": "Incendio en la Quinta Región"
+  }]);

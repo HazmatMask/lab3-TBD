@@ -28,9 +28,9 @@
             <p>Encuentra a los voluntarios más cercanos a una tarea.</p>
           </div>
             <div class="card" @click="navigateTo('estadisticas')">
-              <font-awesome-icon icon="fa-solid fa-users" size="3x" class="icon" />
-              <h2>Estadisticas</h2>
-              <p>bottom text</p>
+              <font-awesome-icon icon="fa-solid fa-pie-chart" size="3x" class="icon" />
+              <h2>Estadísticas</h2>
+              <p>Consulta la cantidad de voluntarios registrados en cada habilidad especificada.</p>
             </div>
         </div>
       </div>
@@ -134,6 +134,7 @@
   .icon {
     margin-bottom: 15px;
     color: #9ad4d6;
+    margin-top: 5px;
   }
   </style>
   
