@@ -3,11 +3,6 @@
 Laboratorio de Taller de Bases de Datos desarrollado por el equipo 6.
 
 ## Integrantes
-* [Javiera Godoy](https://github.com/JavieraGodoy)
-* [Ignacio Lara](https://github.com/kappita)
-* [David Martinez](https://github.com/davidmartinez-esc)
-* [Claudio Palma](https://github.com/claudiopalma2001)
-* [Paloma Zepeda](https://github.com/cukidev)
 * [Alejandro Rojas](https://github.com/HazmatMask)
 
 ## Descripción
